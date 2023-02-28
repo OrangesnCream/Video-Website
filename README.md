@@ -10,9 +10,9 @@ Please follow the instructions below and fill in the information requested when 
 
 |               | Information   |
 |:-------------:|:-------------:|
-| Student Name  | name-here     |
-| Student ID    | id-here       |
-| Student Email | email-here    |
+| Student Name  | Luis M Alvarado Rivas     |
+| Student ID    | 920763269     |
+| Student Email | lalvaradorivas@sfsu.edu    |
 
 
 

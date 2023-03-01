@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PostVideo</title>
 </head>
 <body>
-    
+    <header>
+        <h2>Post video</h2>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="registration.html">Register</a></li>
+                <li><a href="viewpost.html">View post</a></li>
+                <li><a href="postvideo.html">Post video</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form>
+        <label for="Title">Title</label>
+        <input type="text" name="Title" id="Title" placeholder="Title">
+
+        <label for="Description">Description</label>
+        <input type="text" name="Description" id="Description" placeholder="Description">
+
+        <label for="file">Upload video:</label>
+        <input type="file" name="file" id="file" />
+
+        <label for="UsePolicy"> Accept the <a href="#">Use Policy.</a></label>
+        <input type="checkbox" id="UsePolicy" name="UsePolicy" value="UseAcceptance">
+        <input type="submit" value="Upload">
+    </form>
 </body>
 </html>

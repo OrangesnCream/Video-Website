@@ -22,18 +22,26 @@
         </nav>
     </header>
     <form>
-        <label for="Title">Title</label>
-        <input type="text" name="Title" id="Title" placeholder="Title">
+        <div class="input-group">
+            <label for="Title">Title</label>
+            <input type="text" name="Title" id="Title" placeholder="Title">
+        </div>
+        <div class="input-group">
+            <label for="Description">Description</label>
+            <input type="text" name="Description" id="Description" placeholder="Description">
+        </div>
+        <div class="input-group">
+            <label for="file">Upload video:</label>
+            <input type="file" name="file" id="file" />
+        </div>
+        <div class="checkbox-group">
 
-        <label for="Description">Description</label>
-        <input type="text" name="Description" id="Description" placeholder="Description">
-
-        <label for="file">Upload video:</label>
-        <input type="file" name="file" id="file" />
-
-        <label for="UsePolicy"> Accept the <a href="#">Use Policy.</a></label>
-        <input type="checkbox" id="UsePolicy" name="UsePolicy" value="UseAcceptance">
-        <input type="submit" value="Upload">
+            <label for="UsePolicy"> Accept the <a href="#">Use Policy.</a></label>
+            <input type="checkbox" id="UsePolicy" name="UsePolicy" value="UseAcceptance">
+        </div>
+        <div class="submit-button">
+            <input type="submit" value="Upload">
+        </div>
     </form>
 </body>
 </html>

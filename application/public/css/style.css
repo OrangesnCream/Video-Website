@@ -15,6 +15,16 @@ html{
     color: azure;
 
 }
+nav ul{
+  background-color: var(--header-bg);
+  display: grid;
+  grid-auto-flow: column;
+  list-style: none;
+  font-size: 125%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+}
 
 
 body {
@@ -38,6 +48,7 @@ h2 {
 footer{
   background-color:var(--header-bg);
   text-align: center;
+  padding: 20px;
 }
 .input-group{
   display: flex;
@@ -57,9 +68,15 @@ footer{
   cursor: pointer;
  
 }
+.clear-button{
+  background-color: var(--site-titlecolor);
+  color: #000000;
+
+}
+
 .submit-button:hover{
   color: var(--site-titlecolor);
-
+  background-color: rgb(28, 29, 37);
 }
 .submit-button:active{
   color: #096F94;

@@ -15,8 +15,12 @@ html{
     color: azure;
 
 }
-nav ul{
+header{
   background-color: var(--header-bg);
+  padding-top: 10px;
+
+}
+nav ul{
   display: grid;
   grid-auto-flow: column;
   list-style: none;
@@ -24,6 +28,13 @@ nav ul{
   padding-top: 20px;
   padding-bottom: 20px;
   
+}
+ul li a{
+  text-decoration: none;
+
+}
+ul li{
+  padding: 4px 8px;
 }
 
 
@@ -34,21 +45,28 @@ body {
 
 a {
   color:var(--site-titlecolor);
+
 }
 a:active {
   color: #096F94;
 }
 h1 {
     color:var(--site-titlecolor);
+    margin-top: 0;
+    margin-left: 20px;
 }
 h2 {
   color:var(--site-titlecolor);
+  margin-top: 0px;
+  margin-left: 20px;
 
 }
 footer{
   background-color:var(--header-bg);
   text-align: center;
-  padding: 20px;
+  padding: 50px;
+  padding-bottom: 50px;
+  margin-top: 200px;
 }
 .input-group{
   display: flex;

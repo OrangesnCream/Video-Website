@@ -105,12 +105,22 @@ footer{
   color: #096F94;
 
 }
+.cat-button:active{
+  color: #096F94;
+
+}
+.button-group{
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
+}
 form{
   display: grid;
   grid-auto-flow: row;
   gap: 17px;
-  width:50%;
+  width:100%;
   padding: 8px;
-  
+  justify-items: center;
+ 
 
 }

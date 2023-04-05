@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
     <title>Login</title>
-    <script defer src="../js/jsfile.js"></script>
+    <script defer src="../js/validation.js"></script>
+
 </head>
 <body>
     <header>
@@ -26,15 +27,16 @@
         </nav>
     </header>
     <form>
-        <div class="input-group">    
-            <label for="username">Username</label>
-            <input class="input-text" type="text" name="username" id="username" placeholder="Username">
+        <div class="form-body">
+            <div class="input-group">    
+                <label for="username">Username</label>
+                <input class="input-text" type="text" name="username" id="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input class="input-text" type="password" name="password" id="password" placeholder="password">
+            </div>
         </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input class="input-text" type="password" name="password" id="password" placeholder="password">
-        </div>
-        
     </form>
     <div class="button-group">
         <input  class="submit-button" type="submit" value="Log in">

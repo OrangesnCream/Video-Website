@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
     <title>Registration</title>
-    <script defer src="../js/jsfile.js"></script>
+    <script defer src="../js/validation.js"></script>
 </head>
 <body>
     <header>
@@ -25,38 +25,41 @@
             </ul>
         </nav>
     </header>
-
-    <form>
-        <div class="input-group">
-            <label for="username">User  Name</label>
-            <input class="input-text" type="text" name="username" id="username" placeholder="Username">
-        </div>
-        <div class="input-group">
-            <label for="Email">Email</label>
-            <input class="input-text" type="text" name="Email" id="Email" placeholder="Email">
-        </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input class="input-text" type="password" name="password" id="password" placeholder="password">
-        </div>
-        <div class="input-group">
-            <label for="confirm_password">Confirm Password</label>
-            <input class="input-text" type="password" name="password" id="confirm_password" placeholder="Confirm password">
-        </div>
-        <div class ="checkbox-group">
-            <label for="ageCheck"> Are you 13+ years of age</label>
-            <input type="checkbox" id="ageCheck" name="ageCheck" value="is13">
-        </div>
-        <div class="checkbox-group">
-            <label for="tosCheck"> Do you accept the <a href="#">Terms and conditons.</a></label>
-            <input type="checkbox" id="tosCheck" name="tosCheck" value="tos">
+    <form id="register-button" >
+        <div class="form-body">
+            <div class="input-group">
+                <label for="username">User  Name</label>
+                <input class="input-text" type="text" name="username" id="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <label for="Email">Email</label>
+                <input class="input-text" type="text" name="Email" id="Email" placeholder="Email">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input class="input-text" type="password" name="password" id="password" placeholder="password">
+            </div>
+            <div class="input-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input class="input-text" type="password" name="password" id="confirm_password" placeholder="Confirm password">
+            </div>
+            <div class ="checkbox-group">
+                <label for="ageCheck"> Are you 13+ years of age</label>
+                <input type="checkbox" id="ageCheck" name="ageCheck" value="is13">
+            </div>
+            <div class="checkbox-group">
+                <label for="tosCheck"> Do you accept the <a href="#">Terms and conditons.</a></label>
+                <input type="checkbox" id="tosCheck" name="tosCheck" value="tos">
+            </div>
         </div>
         <!--<input type="submit" value="Register">-->
+        <div class="button-group" >
+            <input class="submit-button" type="submit" value="Register" >
+            <input class="submit-button clear-button" type="submit" value="Clear">
+        </div>
     </form>
-    <div class="button-group">
-        <input class="submit-button" type="submit" value="Register">
-        <input class="submit-button clear-button" type="submit" value="Clear">
-    </div>
+    
+
     <footer>
             Luis M Alvarado Rivas &copy;2023
     </footer>

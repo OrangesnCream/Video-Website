@@ -198,7 +198,7 @@ footer{
 
 
 
-form{
+form > .form-body{
   display: grid;
   grid-auto-flow: row;
   gap: 17px;
@@ -208,11 +208,16 @@ form{
  
 
 }
+
 .hidden-menu{
   display: none;
 }
-
-
+.valid-text{
+  outline: solid green;
+}
+.invalid-text{
+  outline: solid red;
+}
 
 /*Code for smaller screens vvvvv*/
 

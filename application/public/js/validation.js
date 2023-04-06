@@ -1,5 +1,7 @@
 let username="";
 let password="";
+let confirmP="";
+let email=false;
 function validateUsername(username){
     if(username.length>=3&&isNaN(username[0])&& Boolean(username.match(/^[A-Za-z0-9]+$/))){
         return true;
@@ -8,14 +10,15 @@ function validateUsername(username){
     }
 }
 function validatePassword(password){
-    let hasUpper="";
-    let hasNum;
-    let hasSpecial=/[/*-+!@#$^&~[]]/;
+    let hasSpecial=/[/*-+!@#$^&~[\]]/;
     if(password.length>=8&&/[A-Z]/.test(password)&&/\d/.test(password)&& hasSpecial.test(password)){
         return true;
     }else{
         return false;
     }
+}
+function confPassword(){
+    return confirmP==password;
 }
 document.getElementById("username").addEventListener("input",function(ev){
     let userInput=ev.currentTarget;
@@ -31,11 +34,12 @@ document.getElementById("username").addEventListener("input",function(ev){
 document.getElementById("register-button").addEventListener("submit",function(ev){
     ev.preventDefault();
 
-   if(validateUsername(username)){
+   if(validateUsername(username)&&validatePassword(confirmP)&&email&&confPassword()){
         console.log(ev);
         ev.currentTarget.submit();
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+       
     }else{
+        alert("Invalid Form-Please Check Input");
         return;
     }
 
@@ -51,4 +55,26 @@ document.getElementById("reg-password").addEventListener("input",function(ev) {
         userPassword.classList.add("invalid-text");
         userPassword.classList.remove("valid-text");
     }
+});
+
+document.getElementById("confirm_password").addEventListener("input",function(ev) {
+    let confirmPassword=ev.currentTarget;
+    confirmP=confirmPassword.value;
+    if(confPassword()){
+        confirmPassword.classList.add("valid-text");
+        confirmPassword.classList.remove("invalid-text");
+    }else{
+        confirmPassword.classList.add("invalid-text");
+        confirmPassword.classList.remove("valid-text");
+    }
+});
+document.getElementById("Email").addEventListener("input",function(ev){
+    let userEmail=ev.currentTarget;
+    emailStr=userEmail.value;
+    if(emailStr.length<=0){
+        email=false;
+    }else{
+        email=true;
+    }
+
 });

@@ -218,6 +218,10 @@ form > .form-body{
 .invalid-text{
   outline: solid red;
 }
+.product-list{
+  display: grid;
+  grid-auto-rows: column;
+}
 
 /*Code for smaller screens vvvvv*/
 

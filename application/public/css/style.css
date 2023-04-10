@@ -219,10 +219,9 @@ form > .form-body{
   outline: solid red;
 }
 .product-list{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(10em,1fr));
+  grid-template-rows: auto;
 
 }
 .pic-grid>img{

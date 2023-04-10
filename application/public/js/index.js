@@ -1,4 +1,6 @@
 var url="https://jsonplaceholder.typicode.com/albums/2/photos";
+var numberPost=document.getElementById('list-size');
+var originalText=numberPost.textContent;
 async function fetchWithDOMAPI(){
     try{
         var response = await fetch(url);
@@ -6,9 +8,11 @@ async function fetchWithDOMAPI(){
         console.log(data);
         var elements =data.map(buildCard);
         document.getElementById('product-list').append(...elements);
+        
     }catch(error){
         console.log(error);
     }
+    updateCounter();
 }
 function fadeOut(ev){
     var ele= ev.currentTarget;
@@ -17,12 +21,17 @@ function fadeOut(ev){
             ele.style.opacity = 1;
         }
         if (ele.style.opacity > 0) {
-            ele.style.opacity -= 0.1;
+            ele.style.opacity -= 0.05;
         } else {
+            ele.remove();
+            updateCounter();
             clearInterval(timer);
         }
-    },200,ele.remove());
-    //ele.remove();
+    },50);
+}
+function updateCounter(){
+    var elementCount=document.getElementsByClassName("product-card").length;
+    numberPost.textContent= originalText+elementCount ;
 }
 function buildCard(data){
     var cardDiv=document.createElement("div");
@@ -37,7 +46,7 @@ function buildCard(data){
     titleTag.appendChild(document.createTextNode(data.title));
 
     var productDiv=document.createElement("div");
-    productDiv.setAttribute("class","product-card");
+    productDiv.setAttribute("class","product-desc");
 
     productDiv.appendChild(titleTag);
     cardDiv.appendChild(imgTag);

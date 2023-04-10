@@ -10,6 +10,20 @@ async function fetchWithDOMAPI(){
         console.log(error);
     }
 }
+function fadeOut(ev){
+    var ele= ev.currentTarget;
+    let timer=setInterval(function (){
+        if (!ele.style.opacity) {
+            ele.style.opacity = 1;
+        }
+        if (ele.style.opacity > 0) {
+            ele.style.opacity -= 0.1;
+        } else {
+            clearInterval(timer);
+        }
+    },200,ele.remove());
+    //ele.remove();
+}
 function buildCard(data){
     var cardDiv=document.createElement("div");
     cardDiv.setAttribute("class","product-card");
@@ -28,6 +42,9 @@ function buildCard(data){
     productDiv.appendChild(titleTag);
     cardDiv.appendChild(imgTag);
     cardDiv.appendChild(productDiv);
+
+    cardDiv.addEventListener('click',fadeOut);
+
     return cardDiv;
 }   
 fetchWithDOMAPI();

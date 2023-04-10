@@ -225,7 +225,10 @@ form > .form-body{
   align-items: center;
 
 }
-.pic-grid{}
+.pic-grid>img{
+  width: 25%;
+  height: 25%;
+}
 .product-list >.product-card{
   flex: 1;
   display: grid;

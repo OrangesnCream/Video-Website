@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
+    <title>PostVideo</title>
+    <script defer src="../js/jsfile.js"></script>
+</head>
+<body>
+    <header>
+        <h2>Post video</h2>
+        <nav>
+            <div class ="hidden-menu"><h2>Menu</h2></div>
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="registration.html">Register</a></li>
+                <li><a href="viewpost.html">View post</a></li>
+                <li><a href="postvideo.html">Post video</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form>
+        <div class="form-body">
+            <div class="input-group">
+                <label for="Title">Title</label>
+                <input class="input-text" type="text" name="Title" id="Title" placeholder="Title">
+            </div>
+            <div class="input-group">
+                <label for="Description">Description</label>
+                <input class="input-text" type="text" name="Description" id="Description" placeholder="Description">
+            </div>
+            <div class="input-group">
+                <label for="file">Upload video:</label>
+                <input type="file" name="file" id="file" />
+            </div>
+            <div class="checkbox-group">
+
+                <label for="UsePolicy"> Accept the <a href="#">Use Policy.</a></label>
+                <input class="input-text" type="checkbox" id="UsePolicy" name="UsePolicy" value="UseAcceptance">
+            </div>
+        </div>
+    </form>
+    <div class="button-group">
+        <input class="submit-button"type="submit" value="Upload">
+    </div>
+    <footer>
+        Luis M Alvarado Rivas &copy;2023
+    </footer>
+</body>
+</html>

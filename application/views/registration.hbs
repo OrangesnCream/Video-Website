@@ -3,7 +3,7 @@
     <script defer src="public/js/validation.js"></script>
 </head>
 <body>
-    <form id="register-button" >
+    <form id="register-button" action="/users/registration" method="POST" enctype="application/x-www-form-urlencoded">
         <div class="form-body">
             <div class="input-group">
                 <label for="username">User  Name</label>
@@ -19,7 +19,7 @@
             </div>
             <div class="input-group">
                 <label for="confirm_password">Confirm Password</label>
-                <input class="input-text" type="password" name="password" id="confirm_password" placeholder="Confirm password">
+                <input class="input-text" type="password" name="passwordConfirm" id="confirm_password" placeholder="Confirm password">
             </div>
             <div class ="checkbox-group">
                 <label for="ageCheck"> Are you 13+ years of age</label>

@@ -4,10 +4,14 @@
             <div class ="hidden-menu"><h2>Menu</h2></div>
             <ul>
                 <li><a href="/">Home</a></li>
+                
+                <li><a href="/viewpost">View post</a></li>
+                <li><a href="/postvideo">Post video</a></li>
+                {{#if isLoggedIn}}
+                    {{>hidden}}
+                {{else}}
                 <li><a href="login">Login</a></li>
-                <li><a href="viewpost">View post</a></li>
-                <li><a href="postvideo">Post video</a></li>
-                <li><a href="profile">Profile</a></li>
+                {{/if}}
             </ul>
         </nav>
     </header>

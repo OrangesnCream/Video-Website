@@ -27,6 +27,7 @@ nav ul{
   list-style: none;
   font-size: 125%;
   align-items: center;
+  justify-content: space-around;
   
 }
 ul li > .dropdown{
@@ -259,6 +260,10 @@ form > .form-body{
   position: relative;
   display: inline-block;
 }
+.dropdown>.video-author{
+  grid-template-columns: .25fr 1fr 
+
+}
 
 .dropdown-content {
   display: none;
@@ -287,6 +292,7 @@ form > .form-body{
   background-color:#d4edda;
   border-color:#c3e6cb
 }
+
 /*Code for smaller screens vvvvv*/
 
 

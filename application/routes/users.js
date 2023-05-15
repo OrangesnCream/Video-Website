@@ -64,7 +64,10 @@ router.post('/login',async function(req,res,next){
               email: user.email,
               username: user.username
             };
-            return res.redirect("/");
+            req.flash("success",`You are now logged in`);
+            req.session.save(function(err){
+              return res.redirect("/");
+            });
         }else{
             return res.redirect("/login");
         }

@@ -39,7 +39,7 @@ document.getElementById("register-button").addEventListener("submit",function(ev
         ev.currentTarget.submit();
        
     }else{
-        alert("Invalid Form-Please Check Input");
+        //alert("Invalid Form-Please Check Input");
         return;
     }
 

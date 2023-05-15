@@ -10,7 +10,9 @@
     <link rel="stylesheet" type="text/css" href="/public/css/style.css" /> 
   </head>
   <body>
-    {{> flashmessage this}}
+    {{#if (nonEmptyObject messages)}}
+      {{> flashmessage this}}
+   {{/if}} 
     {{>header}}
     {{{body}}}
     {{>footer}}

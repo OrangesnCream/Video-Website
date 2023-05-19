@@ -5,9 +5,15 @@
 <body>
     <form id="register-button" action="/users/registration" method="POST" enctype="application/x-www-form-urlencoded">
         <div class="form-body">
-            <div class="input-group">
+            <div class="input-group dropdown">
                 <label for="username">User  Name</label>
                 <input class="input-text" type="text" name="username" id="username" placeholder="Username">
+                <div class="dropdown-content">
+                    <p>
+                        Username must begin with a letter and have at least 3 characters.
+                    </p>
+
+                </div>
             </div>
             <div class="input-group">
                 <label for="Email">Email</label>
@@ -33,9 +39,10 @@
         <!--<input type="submit" value="Register">-->
         <div class="button-group" >
             <input class="submit-button" type="submit" value="Register" >
-            <input class="submit-button clear-button" type="submit" value="Clear">
+            <input id="clear-button"class="submit-button clear-button" type="submit" value="Clear" action="/login">
         </div>
     </form>
 </body>
 </html>
+
 <!-- This is a comment -->

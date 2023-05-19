@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var db =require('../conf/database');
 var bcrypt =require('bcrypt');
+var{isLoggedIn,isMyProfile}=require("../middleware/auth");
+const {isUsernameUnique,usernameCheck}=require("../middleware/validation");
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
 try{
@@ -16,23 +18,21 @@ try{
 router.post('/registration',async function(req,res,next){
  var {username,Email,password}=req.body;
   try{
-    var [rows,fields]= await db.execute(`select id from users where username=?;`,[username]);
-    if(rows&&rows.length>0){
-      return res.redirect('/registration');
-    }
-    var [rows,fields]= await db.execute(`select id from users where email=?;`,[Email]);
-    if(rows&&rows.length>0){
-      return res.redirect('/registration');
-    }
 
     var hashedPassword= await bcrypt.hash(password,3);
     var [resultObject,fields]= await db.execute(`INSERT INTO users
      (username,email,password) value (?,?,?);`,[username,Email,hashedPassword]);
 
      if(resultObject&&resultObject.affectedRows==1){
-      return res.redirect("/login");
+      req.flash("success",`Account created :D`);
+      return req.session.save(function(err){
+        return res.redirect("/login");
+      });
      }else{
-      return res.redirect("/registration");
+      req.flash("error",`${username} failed to register`);
+      return req.session.save(function(err){
+        return res.redirect('/registration');
+      });
      }
   }catch(error){
     next(error);
@@ -98,7 +98,7 @@ router.post('/login',async function(req,res,next){
     return res.redirect('/');
   })
  });
-router.get("/profile",function(req,res){
+router.get("/profile/:id(\\d+)",isLoggedIn,isMyProfile,function(req,res){
   res.render("profile");
 });
 module.exports = router;

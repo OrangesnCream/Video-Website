@@ -45,6 +45,12 @@ document.getElementById("register-button").addEventListener("submit",function(ev
 
 
 });
+document.getElementById("clear-button").addEventListener("submit",function(ev){
+    ev.preventDefault();
+    location = location;
+
+
+});
 document.getElementById("reg-password").addEventListener("input",function(ev) {
     let userPassword=ev.currentTarget;
     password=userPassword.value;

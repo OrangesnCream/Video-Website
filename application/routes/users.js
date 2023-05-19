@@ -3,7 +3,7 @@ var router = express.Router();
 var db =require('../conf/database');
 var bcrypt =require('bcrypt');
 var{isLoggedIn,isMyProfile}=require("../middleware/auth");
-const {isUsernameUnique,usernameCheck}=require("../middleware/validation");
+const {isUsernameUnique,usernameCheck,passwordCheck,emailCheck}=require("../middleware/validation");
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
 try{
@@ -15,7 +15,7 @@ try{
 }
 });
 
-router.post('/registration',async function(req,res,next){
+router.post('/registration',usernameCheck,emailCheck,passwordCheck,isUsernameUnique,async function(req,res,next){
  var {username,Email,password}=req.body;
   try{
 

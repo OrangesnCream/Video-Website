@@ -11,13 +11,35 @@ module.exports={
             req.flash("error","username must begin with a character");
         }
         if(req.session.flash.error){
-            res.redirect('/register');
+            res.redirect('/registration');
         }else{
             next();
         }
     },
-    passwordCheck: function(req,res,next){},
-    emailCheck:function(req,res,next){},
+    passwordCheck: function(req,res,next){
+        var {password}=req.body;
+        if(!validator.isStrongPassword(password)){
+            req.flash("error",`${password} is not a valid password`);
+        }
+        if(req.session.flash.error){
+            res.redirect('/registration');
+        }else{
+            next();
+        }
+    },
+    emailCheck:function(req,res,next){
+        var {Email}=req.body;
+        Email=Email.trim();
+        if(!validator.isEmail(Email)){
+            req.flash("error",`${Email} is not a valid Email`);
+        }
+        if(req.session.flash.error){
+            res.redirect('/registration');
+        }else{
+            next();
+        }
+
+    },
     tosCheck: function(req,res,next){},
     ageCheck:function(req,res,next){},
     isUsernameUnique:async function(req,res,next){

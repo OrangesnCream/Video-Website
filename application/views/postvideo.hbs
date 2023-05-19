@@ -4,29 +4,30 @@
     <script defer src="public/js/jsfile.js"></script>
 </head>
 <body>
-    <form>
+    <form action="/posts/create" method="POST" enctype="multipart/form-data">
         <div class="form-body">
             <div class="input-group">
                 <label for="Title">Title</label>
-                <input class="input-text" type="text" name="Title" id="Title" placeholder="Title">
+                <input class="input-text" type="text" name="Title" id="Title" placeholder="Title" required>
             </div>
             <div class="input-group">
                 <label for="Description">Description</label>
-                <input class="input-text" type="text" name="Description" id="Description" placeholder="Description">
+                <input class="input-text" type="text" name="Description" id="Description" placeholder="Description"required>
             </div>
             <div class="input-group">
                 <label for="file">Upload video:</label>
-                <input type="file" name="file" id="file" />
+                <input type="file" name="uploadVideo" id="file" required />
             </div>
             <div class="checkbox-group">
 
-                <label for="UsePolicy"> Accept the <a href="#">Use Policy.</a></label>
-                <input class="input-text" type="checkbox" id="UsePolicy" name="UsePolicy" value="UseAcceptance">
+                <label for="UsePolicy"> Accept the <a href="https://i.imgur.com/zvaBM9j.png">Use Policy.</a></label>
+                <input class="input-text" type="checkbox" id="UsePolicy" name="UsePolicy" value="UseAcceptance" required>
             </div>
         </div>
-    </form>
-    <div class="button-group">
+        <div class="button-group">
         <input class="submit-button"type="submit" value="Upload">
     </div>
+    </form>
+    
 </body>
 </html>

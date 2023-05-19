@@ -5,14 +5,16 @@
 <body>
     <form id="register-button" action="/users/registration" method="POST" enctype="application/x-www-form-urlencoded">
         <div class="form-body">
-            <div class="input-group dropdown">
+            <div class="input-group">
                 <label for="username">User  Name</label>
-                <input class="input-text" type="text" name="username" id="username" placeholder="Username">
-                <div class="dropdown-content">
-                    <p>
-                        Username must begin with a letter and have at least 3 characters.
-                    </p>
+                <div class="dropdown">
+                    <input class="input-text" type="text" name="username" id="username" placeholder="Username">
+                    <div class="dropdown-content">
+                        <p>
+                            Username must begin with a letter and have at least 3 characters.
+                        </p>
 
+                    </div>
                 </div>
             </div>
             <div class="input-group">
@@ -21,7 +23,12 @@
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input class="input-text" type="password" name="password" id="reg-password" placeholder="password">
+                <div class="dropdown"> 
+                    <input class="input-text" type="password" name="password" id="reg-password" placeholder="password">
+                    <div class="dropdown-content">
+                        <p>must have min 8 characters, 1 uppercase, and lowercase letter.1 number,and 1 special symbol</p>
+                    </div>
+                </div>
             </div>
             <div class="input-group">
                 <label for="confirm_password">Confirm Password</label>
@@ -32,7 +39,7 @@
                 <input type="checkbox" id="ageCheck" name="ageCheck" value="is13" required>
             </div>
             <div class="checkbox-group">
-                <label for="tosCheck"> Do you accept the <a href="#">Terms and conditons.</a></label>
+                <label for="tosCheck"> Do you accept the <a href="https://i.imgur.com/B3AZkzv.jpg">Terms and conditons.</a></label>
                 <input type="checkbox" id="tosCheck" name="tosCheck" value="tos" required>
             </div>
         </div>

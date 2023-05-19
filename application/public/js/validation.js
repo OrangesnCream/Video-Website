@@ -10,7 +10,7 @@ function validateUsername(username){
     }
 }
 function validatePassword(password){
-    let hasSpecial=/[/*-+!@#$^&~[\]]/;
+    let hasSpecial=/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
     if(password.length>=8&&/[A-Z]/.test(password)&&/\d/.test(password)&& hasSpecial.test(password)){
         return true;
     }else{
@@ -30,20 +30,6 @@ document.getElementById("username").addEventListener("input",function(ev){
         userInput.classList.add("invalid-text");
         userInput.classList.remove("valid-text");
     }
-});
-document.getElementById("register-button").addEventListener("submit",function(ev){
-    ev.preventDefault();
-
-   if(validateUsername(username)&&validatePassword(confirmP)&&email&&confPassword()){
-        console.log(ev);
-        ev.currentTarget.submit();
-       
-    }else{
-        //alert("Invalid Form-Please Check Input");
-        return;
-    }
-
-
 });
 document.getElementById("clear-button").addEventListener("submit",function(ev){
     ev.preventDefault();
@@ -74,13 +60,4 @@ document.getElementById("confirm_password").addEventListener("input",function(ev
         confirmPassword.classList.remove("valid-text");
     }
 });
-document.getElementById("Email").addEventListener("input",function(ev){
-    let userEmail=ev.currentTarget;
-    emailStr=userEmail.value;
-    if(emailStr.length<=0){
-        email=false;
-    }else{
-        email=true;
-    }
 
-});

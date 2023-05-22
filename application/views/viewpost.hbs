@@ -4,23 +4,33 @@
 <body>
     <div class="post-video">
         <div class="video">
-            <video width="600" height="420" controls><source src="https://i.imgur.com/lcdB61j.mp4" type="video/mp4"></video>
+            <video width="600" height="420" controls><source src='/{{currentPost.video}}' type="video/mp4"></video>
         </div>
         <div class="video-title">
-            <h3>Duck</h3>
+            <h2>{{currentPost.title}}</h2>
         </div>
         <div class="video-author">
-            <img id="photo" src="https://i.imgur.com/zvaBM9j.png"width="100px" height="100px" alt="">
-            <a href="profile">Duck Owner</a>
-           
+            <div>
+                <img id="photo" src="https://i.imgur.com/zvaBM9j.png"width="100px" height="100px" alt="">
+                <a href="profile">{{currentPost.username}}</a>
+            </div>
+            <h>Description: 
+                {{currentPost.description}}</h>
             <p>
-                1/23/1984
+                {{currentPost.createdAT}}
             </p>   
         </div> 
         <div class="comment-section">
             <h3>
                 Comment Section
             </h3>
+            <div class="input-group">
+                <label for="comment_box">Comment</label>
+                <textarea class="input-text" type="text" name="commentInput" id="comment_box" placeholder="Add a comment..."></textarea>
+                <div class="button-group">
+                    <input  class="submit-button comment-button" type="submit" value="Comment">
+                 </div>
+            </div>
             <div class="comment-post">
                 <div>
                     <img id="photo" src="https://i.imgur.com/zvaBM9j.png"width="100px" height="100px" alt="">
@@ -54,6 +64,7 @@
             <img id="photo" src="https://i.imgur.com/ag0qmlI.jpg" width="100px" height="100px" alt="">
             <a href="/">Oregon mafia run protection racket</a>
         </div>
+
     </div>
     </div>
 </body>

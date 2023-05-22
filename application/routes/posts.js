@@ -2,7 +2,7 @@ var express=require('express');
 var router =express.Router();
 var multer= require('multer');
 var db=require('../conf/database');
-const { makeThumbnail } = require('../middleware/posts');
+const { makeThumbnail, getPostById} = require('../middleware/posts');
 const { isLoggedIn } = require('../middleware/auth');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -29,7 +29,7 @@ router.post("/create",isLoggedIn,upload.single("uploadVideo"),makeThumbnail,asyn
             req.flash("success","Your post was created!");
             return req.session.save(function(error){
                 if(error){next(error)};
-                return res.redirect(`/`);
+                return res.redirect(`/posts/${insertResult.insertId}`);
             });
         }else{
             next(new Error('Post could not be created'));
@@ -40,9 +40,16 @@ router.post("/create",isLoggedIn,upload.single("uploadVideo"),makeThumbnail,asyn
     }
 
 });
-router.get('/:id(\\d+)',function(req,res){
+router.get('/:id(\\d+)',getPostById,function(req,res){
+   console.log( req);
     res.render('viewpost',{pageTitle:"",js:["viewpost.js"]});
   });
 
+router.get("/search",function (req,res,next) {
+    console.log(req.query);
+    res.end();
+});
+router.delete("delete",function(req,res,next){
 
+});
 module.exports= router;

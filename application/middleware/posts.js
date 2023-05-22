@@ -1,5 +1,6 @@
 var pathToFFMPEG =require('ffmpeg-static');
 var exec =require('child_process').exec;
+var db =require('../conf/database');
 module.exports={
     makeThumbnail: function(req,res,next) {
         if(!req.file){
@@ -16,6 +17,35 @@ module.exports={
             }
             
         }
-    }
+    },
+    //implement these yourself
+    getPostsForUserBy: function(req,res,next) {},
+    getPostById:async function (req,res,next) {
+        var{id}= req.params;
+        try {
+            let[rows,_]= await db.execute(
+                `select u.username, p.video, p.title,p.createdAT, p.description, p.id from posts p JOIN users u on p.fk_userId=u.id where p.id=?;`,
+                [id]
+            );
+            const post= rows[0];
+            if(!post){
+                req.flash("error",`Post does not exist`);
+            req.session.save(function(err){
+                if(err) next(err);
+                res.redirect('/');
+
+            });
+
+            }else{
+                res.locals.currentPost=post;
+                next();
+            }
+        } catch (error) {
+            next(error);
+        }
+    
+    },
+    getCommentsForPostsById:function (req,res,next) {},
+    getRecentPostsById:function (req,res,next) {},
     
 }

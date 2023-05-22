@@ -4,7 +4,12 @@
             <div class ="hidden-menu"><h2>Menu</h2></div>
             <ul>
                 <li><a href="/">Home</a></li>
-                
+                 <div class="search-bar">
+                    <form method="GET" enctype="application/x-www-form-urlencoded" action="/posts/search">
+                        <input class="search-input"type="text"id="search-input"name="searchValue" placeholder="Search">
+                        <button type="submit"class="search-button">Search</button>
+                    </form>
+                </div>
                 <li><a href="/viewpost">View post</a></li>
                 <li><a href="/postvideo">Post video</a></li>
                 {{#if isLoggedIn}}

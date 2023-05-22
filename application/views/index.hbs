@@ -1,6 +1,5 @@
 <head>
    <title>Index</title>
-    <script defer src="public/js/index.js"></script>
 </head>
 <body>
     <p>
@@ -14,9 +13,10 @@
         </form>
 
     </div>
-    <p id="list-size">Post #: </p>
     <div id="product-list" class="product-list">
-        
+        {{#each posts}}
+        {{>card this}}
+        {{/each}}
     </div>
 </body>
 </html>

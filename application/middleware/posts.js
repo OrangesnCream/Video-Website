@@ -46,6 +46,21 @@ module.exports={
     
     },
     getCommentsForPostsById:function (req,res,next) {},
-    getRecentPostsById:function (req,res,next) {},
+    getRecentPosts:async function (req,res,next) {
+        try {
+            var[rows,_]=await db.execute(
+                `select id,title,thumbnail FROM posts ORDER BY createdAT DESC limit 10;`
+            );
+            if(rows&&rows.length==0){
+    
+            }else{
+                res.locals.posts=rows;
+                res.render('index');
+    
+            }//add later
+        } catch (error) {
+            next(error);
+       }
+    },
     
 }

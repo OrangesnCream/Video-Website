@@ -242,7 +242,7 @@ form > .form-body{
   flex: 1;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr .5fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 }
@@ -301,7 +301,7 @@ form > .form-body{
 
 }
 .search-bar {
-  width: 500px;
+  width: 600px;
   margin: 0px auto;
   line-height: 56px;
   position: relative

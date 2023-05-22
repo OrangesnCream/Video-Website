@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var{isLoggedIn,isMyProfile}=require("../middleware/auth");
+const { getRecentPosts } = require('../middleware/posts');
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',getRecentPosts, function(req, res, next) {
   res.render('index', { title: 'CSC 317 App', pageTitle: 'CSC 317 Website',name:"Luis Alvarado Rivas" });
 });
 
@@ -19,8 +20,6 @@ router.get("/profile",function(req,res){
 router.get("/registration",function(req,res){
   res.render('registration',{pageTitle: 'Register'});
 });
-router.get('/viewpost/:id(\\d+)',function(req,res){
-  res.render('viewpost',{pageTitle:"",js:["viewpost.js"]});
-});
+
 
 module.exports = router;

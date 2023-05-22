@@ -4,6 +4,7 @@ var multer= require('multer');
 var db=require('../conf/database');
 const { makeThumbnail, getPostById} = require('../middleware/posts');
 const { isLoggedIn } = require('../middleware/auth');
+const { render } = require('../app');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, "public/videos/uploads")
@@ -45,9 +46,22 @@ router.get('/:id(\\d+)',getPostById,function(req,res){
     res.render('viewpost',{pageTitle:"",js:["viewpost.js"]});
   });
 
-router.get("/search",function (req,res,next) {
-    console.log(req.query);
-    res.end();
+router.get("/search",async function (req,res,next) {
+    var {searchValue}=req.query;
+    try {
+        var[rows,_]=await db.execute(
+            `select id,title,thumbnail, concat_ws(' ',title,description) as haystack from posts having haystack like ?;`,[`%${searchValue}%`]
+        );
+        if(rows&&rows.length==0){
+
+        }else{
+            res.locals.posts=rows;
+            res.render('index');
+
+        }//add later
+    } catch (error) {
+        next(error);
+   }
 });
 router.delete("delete",function(req,res,next){
 

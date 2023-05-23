@@ -5,7 +5,8 @@ module.exports={
         }else{
             req.flash("error",`You must be logged in.`);
             req.session.save(function(err){
-                if(err) next(err);
+                if(err){next(err);}
+    
                 res.redirect('/login');
 
             });

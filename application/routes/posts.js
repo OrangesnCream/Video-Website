@@ -2,7 +2,7 @@ var express=require('express');
 var router =express.Router();
 var multer= require('multer');
 var db=require('../conf/database');
-const { makeThumbnail, getPostById} = require('../middleware/posts');
+const { makeThumbnail, getPostById, getCommentsForPostsById} = require('../middleware/posts');
 const { isLoggedIn } = require('../middleware/auth');
 const { render } = require('../app');
 const storage = multer.diskStorage({
@@ -41,8 +41,7 @@ router.post("/create",isLoggedIn,upload.single("uploadVideo"),makeThumbnail,asyn
     }
 
 });
-router.get('/:id(\\d+)',getPostById,function(req,res){
-   console.log( req);
+router.get('/:id(\\d+)',getPostById,getCommentsForPostsById, function(req,res){
     res.render('viewpost',{pageTitle:"",js:["viewpost.js"]});
   });
 

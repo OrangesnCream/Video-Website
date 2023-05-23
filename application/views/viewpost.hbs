@@ -1,5 +1,6 @@
 <head>
     <title>ViewPost</title>
+    <script defer src="/public/js/viewpost.js"></script>
 </head>
 <body>
     <div class="post-video">
@@ -17,29 +18,32 @@
             <h>Description: 
                 {{currentPost.description}}</h>
             <p>
-                {{currentPost.createdAT}}
+                {{formatDateString currentPost.createdAT}}
             </p>   
         </div> 
-        <div class="comment-section">
+        <div class="comment-section" id="comments">
             <h3>
                 Comment Section
             </h3>
             <div class="input-group">
                 <label for="comment_box">Comment</label>
-                <textarea class="input-text" type="text" name="commentInput" id="comment_box" placeholder="Add a comment..."></textarea>
+                <textarea class="input-text" type="text" name="commentInput" id="comment-text" placeholder="Add a comment..."></textarea>
                 <div class="button-group">
-                    <input  class="submit-button comment-button" type="submit" value="Comment">
+                    <input id="comment-button" data-postid="{{currentPost.id}}"  class="submit-button comment-button" type="submit" value="Comment">
                  </div>
             </div>
+            {{#each currentPost.comments}}
             <div class="comment-post">
                 <div>
                     <img id="photo" src="https://i.imgur.com/zvaBM9j.png"width="100px" height="100px" alt="">
-                    <a href="profile">Duck Owner</a>
+                    <a href="profile">{{this.username}}</a>
+                    <span>{{formatDateString this.createdAT}}</span>
                 </div>
                 <p>
-                    subscribe for duck giveaway
+                    {{this.text}}
                 </p>
             </div>
+            {{/each}}
             <div class="comment-post">
                 <div>
                     <img id="photo" src="https://i.imgur.com/Lr5503O.jpg"width="100px" height="100px" alt="">
@@ -66,6 +70,8 @@
         </div>
 
     </div>
+   
     </div>
 </body>
+ 
 </html>

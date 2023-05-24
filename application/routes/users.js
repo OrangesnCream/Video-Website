@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db =require('../conf/database');
 var bcrypt =require('bcrypt');
+var{getRecentPosts, getPostsForUserBy}=require("../middleware/posts");
 var{isLoggedIn,isMyProfile}=require("../middleware/auth");
 const {isUsernameUnique,usernameCheck,passwordCheck,emailCheck}=require("../middleware/validation");
 /* GET users listing. */
@@ -98,7 +99,7 @@ router.post('/login',async function(req,res,next){
     return res.redirect('/');
   })
  });
-router.get("/profile/:id(\\d+)",isLoggedIn,isMyProfile,function(req,res){
+router.get("/profile/:id(\\d+)",isLoggedIn,isMyProfile,getPostsForUserBy,function(req,res){
   res.render("profile");
 });
 module.exports = router;

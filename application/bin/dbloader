@@ -113,7 +113,7 @@ async function makeCommentsTable(connection) {
       CONSTRAINT fk_postId
         FOREIGN KEY (fk_postId)
         REFERENCES ${process.env.DB_NAME}.posts (id)
-        ON DELETE NO ACTION
+        ON DELETE CASCADE
         ON UPDATE NO ACTION)
     ENGINE = InnoDB`
   );

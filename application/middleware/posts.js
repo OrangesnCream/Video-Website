@@ -19,7 +19,41 @@ module.exports={
         }
     },
     //implement these yourself
-    getPostsForUserBy: function(req,res,next) {},
+    getPostsForUserBy: async function(req,res,next) {
+        try {
+            var{id}= req.params;
+            var[rows,_]=await db.execute(
+                `select id,title,thumbnail,fk_userId FROM posts where fk_userId=?;`,[id]
+            );
+            if(rows&&rows.length==0){
+                res.locals.posts = []; // Set an empty array for posts
+                res.render('profile');
+            }else{
+                res.locals.posts=rows;
+                res.render('profile');
+    
+            }//add later
+        } catch (error) {
+            next(error);
+       }
+    },
+    getOtherUserPosts:async function(req,res,next){
+        try {
+            var{id}= req.params;
+            var[rows,_]=await db.execute(
+                `SELECT * FROM posts WHERE fk_userId = ( SELECT fk_userId FROM posts WHERE id = ?);`,[id]
+            );
+            if(rows&&rows.length==0){
+    
+            }else{
+                res.locals.posts=rows;
+                res.render('viewpost');
+    
+            }//add later
+        } catch (error) {
+            next(error);
+       }
+    },
     getPostById:async function (req,res,next) {
         var{id}= req.params;
         try {
@@ -64,7 +98,8 @@ module.exports={
                 `select id,title,thumbnail FROM posts ORDER BY createdAT DESC limit 10;`
             );
             if(rows&&rows.length==0){
-    
+                res.locals.posts = []; // Set an empty array for posts
+                res.render('index');
             }else{
                 res.locals.posts=rows;
                 res.render('index');

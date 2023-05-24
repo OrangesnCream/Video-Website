@@ -1,11 +1,10 @@
 <head>
     <title>Profile</title>
-    <script defer src="public/js/jsfile.js"></script>
 </head>
 <body>
     <div class="user-profile">
         <div class="video-author">
-            <img id="photo" src="https://i.imgur.com/zvaBM9j.png"width="100px" height="100px" alt="">
+            <img id="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/510px-Default_pfp.svg.png?20220226140232"width="100px" height="100px" alt="">
        
             <h2>
                 {{user.username}}
@@ -19,9 +18,40 @@
         <h3>
             Post
         </h3>
-        <ul>
-            <li><a href="viewpost">Duck Quacks(real)(amazing)(MUST WATCH)</a></li>
-        </ul>
+        <div class="video-suggested">
+            {{#each posts}}
+        <div class="thumbnail">
+            <img id="photo" src="/{{this.thumbnail}}"width="100px" height="100px" alt="">
+            <a href="/posts/{{this.id}}">{{this.title}}</a>
+            <button class="submit-button menu-button delete-button" data-postid="{{this.id}}">Delete</button>
+        </div> 
+
+            {{/each}}
+        </div>
     </div>
 </body>
+<script>
+    document.querySelectorAll('.delete-button').forEach(button=>{
+        button.addEventListener('click',()=>{
+            var postId=button.dataset.postid;
+            fetch(`/posts/delete/${postId}`,{
+                method:'DELETE',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            .then((response)=>response.json())
+            .then((data)=>{if(data.error){
+                console.error(data.error);
+                return;
+            }
+            window.location.href="/";
+            })
+            .catch(error=>console.error('Error occurred while deleting the post'))
+            
+
+        });
+
+    });
+</script>
 </html>

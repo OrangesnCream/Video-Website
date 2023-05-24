@@ -12,7 +12,7 @@
         </div>
         <div class="video-author">
             <div>
-                <img id="photo" src="https://i.imgur.com/zvaBM9j.png"width="100px" height="100px" alt="">
+                <img id="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/510px-Default_pfp.svg.png?20220226140232"width="100px" height="100px" alt="">
                 <h3>{{currentPost.username}}</h3>
             </div>
             <h>Description: 
@@ -35,7 +35,7 @@
             {{#each currentPost.comments}}
             <div class="comment-post">
                 <div>
-                    <img id="photo" src="https://i.imgur.com/zvaBM9j.png"width="100px" height="100px" alt="">
+                    <img id="photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/510px-Default_pfp.svg.png?20220226140232"width="100px" height="100px" alt="">
                     <a href="profile">{{this.username}}</a>
                     <span>{{formatDateString this.createdAT}}</span>
                 </div>
@@ -44,30 +44,16 @@
                 </p>
             </div>
             {{/each}}
-            <div class="comment-post">
-                <div>
-                    <img id="photo" src="https://i.imgur.com/Lr5503O.jpg"width="100px" height="100px" alt="">
-                    <a href="profile">Duck Hater</a>
-                </div>
-                <p>
-                    eat the duck
-                </p>
-            </div>
         </div>
     <div class="video-suggested">
-        <h3>Suggested Videos</h3>
+        <h3>Other Videos by {{currentPost.username}}</h3>
+        {{#each posts}}
         <div class="thumbnail">
-            <img id="photo" src="https://i.imgur.com/DjiyUdR.jpg"width="100px" height="100px" alt="">
-            <a href="/">Don't go to denny's at 3am</a>
+             <img id="photo" src="/{{this.thumbnail}}"width="100px" height="100px" alt="">
+            <a href="/posts/{{this.id}}">{{this.title}}</a>
+            
         </div>
-        <div class="thumbnail">
-            <img id="photo" src="https://i.imgur.com/8vWy7Kh.jpg"width="100px" height="100px" alt="">
-            <a href="/">Serial killer post on social media after escape</a>
-        </div>
-        <div class="thumbnail">
-            <img id="photo" src="https://i.imgur.com/ag0qmlI.jpg" width="100px" height="100px" alt="">
-            <a href="/">Oregon mafia run protection racket</a>
-        </div>
+        {{/each}}
 
     </div>
    

@@ -2,9 +2,10 @@ var express=require('express');
 var router =express.Router();
 var multer= require('multer');
 var db=require('../conf/database');
-const { makeThumbnail, getPostById, getCommentsForPostsById} = require('../middleware/posts');
+const { makeThumbnail, getPostById, getCommentsForPostsById, getOtherUserPosts } = require('../middleware/posts');
 const { isLoggedIn } = require('../middleware/auth');
 const { render } = require('../app');
+const flash = require('express-flash');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, "public/videos/uploads")
@@ -41,7 +42,7 @@ router.post("/create",isLoggedIn,upload.single("uploadVideo"),makeThumbnail,asyn
     }
 
 });
-router.get('/:id(\\d+)',getPostById,getCommentsForPostsById, function(req,res){
+router.get('/:id(\\d+)',getPostById,getCommentsForPostsById, getOtherUserPosts, function(req,res){
     res.render('viewpost',{pageTitle:"",js:["viewpost.js"]});
   });
 
@@ -62,7 +63,18 @@ router.get("/search",async function (req,res,next) {
         next(error);
    }
 });
-router.delete("delete",function(req,res,next){
-
+router.delete("/delete/:id(\\d+)", async function(req,res,next){
+    var postId=req.params.id;
+    try {
+        var[resultObject,_]=await db.execute(`DELETE FROM posts WHERE id=?;`,[postId]);
+        if(resultObject&&resultObject.affectedRows>0){
+            res.json({ success: true, message: 'Post deleted' });
+        }else{
+            res.json({ success: false, message: 'Failed to delete post' }); 
+            
+        }
+    } catch (error) {
+        next(error);
+    }
 });
 module.exports= router;

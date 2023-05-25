@@ -68,8 +68,10 @@ router.delete("/delete/:id(\\d+)", async function(req,res,next){
     try {
         var[resultObject,_]=await db.execute(`DELETE FROM posts WHERE id=?;`,[postId]);
         if(resultObject&&resultObject.affectedRows>0){
+            req.flash("success","Post was deleted");
             res.json({ success: true, message: 'Post deleted' });
         }else{
+            req.flash("error","failed to delete post");
             res.json({ success: false, message: 'Failed to delete post' }); 
             
         }
